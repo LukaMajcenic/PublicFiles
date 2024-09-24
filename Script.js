@@ -190,9 +190,9 @@
         logDiv.scrollTop = logDiv.scrollHeight;
     }
 
-    function addLogError(text)
+    function addLogError(error)
     {
-        logDiv.insertAdjacentHTML('beforeend', `<span style="color: red">(${logDiv.getElementsByTagName('span').length + 1}) ${text}</span>`);
+        logDiv.insertAdjacentHTML('beforeend', `<span style="color: red">(${logDiv.getElementsByTagName('span').length + 1}) line:${error.lineNumber}  ${error}</span>`);
         logDiv.scrollTop = logDiv.scrollHeight;
     }
 
