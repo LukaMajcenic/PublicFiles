@@ -82,6 +82,7 @@
             align-items: start;
             background: #0006;
             padding: 8px;
+            scrollbar-width: none;
         }
 
         #log-div::-webkit-scrollbar {
