@@ -573,12 +573,11 @@
     document.getElementById('btn-get-question').addEventListener("click", async () => {
 
         try {
+            //TODO: Accept only one question
             let data = JSON.parse(dataInput.value);
-            let queries = extractQuestions();
-            queries = queries.filter(q => !q.includes('\n'))
-            if (data.question) {
-                queries.unshift(data.question);
-            }
+            let queries = [data.question];
+
+            console.log(queries);
 
             let queryUrl = url + '?' + queries.map(q => 'questions=' + encodeURIComponent(q)).join('&');
 
