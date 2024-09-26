@@ -575,9 +575,11 @@
         try {
             //TODO: Accept only one question
             let data = JSON.parse(dataInput.value);
-            let queries = [data.question];
-
-            console.log(queries);
+            let queries = extractQuestions();
+            queries = queries.filter(q => !q.includes('\n'))
+            if (data.question) {
+                queries.unshift(data.question);
+            }
 
             let queryUrl = url + '?' + queries.map(q => 'questions=' + encodeURIComponent(q)).join('&');
 
