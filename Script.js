@@ -557,7 +557,7 @@
                     })
                 });
 
-                showModal();
+                //showModal();
             }
             else {
                 addLogError("Failed to extract question", line());
