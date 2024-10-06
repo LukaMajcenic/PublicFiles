@@ -527,15 +527,13 @@
                 item.replace(/\s/g, "").toLowerCase().includes(data.question.replace(/\s/g, "").toLowerCase())
             ).sort((a, b) => a.length - b.length)
 
-            if (filteredEntries.length > 1) {
+            if (filteredEntries.length != 0) {
                 addLogError('Length of filtered is ' + filteredEntries.length, line())
 
-                if (filteredEntries.length != 0) {
-                    dataInput.value = JSON.stringify({
-                        question: filteredEntries[0].trim(),
-                        answers: []
-                    }, null, 2);
-                }
+                dataInput.value = JSON.stringify({
+                    question: filteredEntries[0].trim(),
+                    answers: []
+                }, null, 2);
 
                 document.getElementById('modal').innerHTML = "";
 
