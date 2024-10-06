@@ -545,6 +545,10 @@
                         "${text}"
                         </button>
                         `)
+
+                    document.getElementById('modal').insertAdjacentHTML('beforeend', `
+                        <input type="text" value="${text}" />
+                        `)
                 })
 
                 Array.from(document.getElementsByClassName('btn-set-q')).forEach(function (element) {
