@@ -530,7 +530,7 @@
             ).sort((a, b) => a.length - b.length)
 
             if (filteredEntries.length != 0) {
-                addLogError('Length of filtered is ' + filteredEntries.length, line())
+                addLogInfo('Length of filtered is ' + filteredEntries.length, line())
 
                 dataInput.value = JSON.stringify({
                     question: filteredEntries[0].trim(),
@@ -538,14 +538,14 @@
                 }, null, 2);
 
                 document.getElementById('modal').innerHTML = "";
-
+                
                 filteredEntries.forEach(text => {
                     document.getElementById('modal').insertAdjacentHTML('beforeend', `
-                        <button class="set-q secondary-btn border-left border-right" q-value="${text}">
+                        <button class="btn-set-q secondary-btn border-left border-right" q-value="${text}">
                         "${text}"
                         </button>
                         `)
-
+                        
                     document.getElementById('modal').insertAdjacentHTML('beforeend', `
                         <input type="text" value="${text}" />
                         `)
