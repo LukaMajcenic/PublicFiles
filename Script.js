@@ -444,6 +444,8 @@
         return [...entries1, ...entries2];
     }
 
+    document.getElementById('divConnectionMonitor').classList.add('d-none');
+
     document.getElementById('btn-auto-mode').addEventListener("click", () => {
         let chechkbox = document.getElementById('auto-mode-chechkbox');
 
