@@ -267,7 +267,7 @@
                         </div>
                         <div class="d-flex">
                             <button class="secondary-btn border-left border-right" id="btn-auto-mode">
-                                <input type="checkbox" id="auto-mode-chechkbox" hidden />
+                                <input type="checkbox" id="auto-mode-checkbox" hidden />
                                 ${ICON_LETTER_A}
                             </button>
                             <button class="secondary-btn border-left" id="btn-extract-question">
@@ -447,7 +447,7 @@
     document.getElementById('divConnectionMonitor').classList.add('d-none');
 
     document.getElementById('btn-auto-mode').addEventListener("click", () => {
-        let chechkbox = document.getElementById('auto-mode-chechkbox');
+        let chechkbox = document.getElementById('auto-mode-checkbox');
 
         chechkbox.checked = !chechkbox.checked;
 
@@ -483,7 +483,7 @@
             console.log("2:" + element);
             setQuestion(element.getAttribute("q-value"));
 
-            if (document.getElementById('auto-mode-chechkbox').checked) {
+            if (document.getElementById('auto-mode-checkbox').checked) {
                 document.getElementById('btn-extract-question').click();
             }
         })
@@ -492,7 +492,7 @@
     document.getElementById('btn-set-q-__').addEventListener("click", () => {
         setQuestion('___');
 
-        if (document.getElementById('auto-mode-chechkbox').checked) {
+        if (document.getElementById('auto-mode-checkbox').checked) {
             document.getElementById('btn-extract-question').click();
         }
     });
@@ -500,7 +500,7 @@
     document.getElementById('btn-set-q-which').addEventListener("click", () => {
         setQuestion('which of the following');
 
-        if (document.getElementById('auto-mode-chechkbox').checked) {
+        if (document.getElementById('auto-mode-checkbox').checked) {
             document.getElementById('btn-extract-question').click();
         }
     });
@@ -545,24 +545,18 @@
                         "${text}"
                         </button>
                         `)
-                        
-                    document.getElementById('modal').insertAdjacentHTML('beforeend', `
-                        <input type="text" value="${text}" />
-                        `)
                 })
 
                 Array.from(document.getElementsByClassName('btn-set-q')).forEach(function (element) {
                     element.addEventListener("click", () => {
                         setQuestion(element.getAttribute("q-value"));
 
-                        if (document.getElementById('auto-mode-chechkbox').checked) {
+                        if (document.getElementById('auto-mode-checkbox').checked) {
                             document.getElementById('btn-extract-question').click();
                         }
                         hideModal();
                     })
                 });
-
-                //showModal();
             }
             else {
                 addLogError("Failed to extract question", line());
