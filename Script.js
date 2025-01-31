@@ -438,10 +438,23 @@
     }
 
     function extractQuestions() {
-        let entries1 = [...new Set(Array.from(document.querySelector('iframe').contentDocument.querySelectorAll('*')).map(x => x.getAttribute('aria-label')).filter(x => x))];
-        let entries2 = [...new Set(Array.from(document.querySelector('iframe').contentDocument.querySelectorAll('*')).map(x => x.innerText).filter(x => x))];
+        let iframe = document.querySelector('iframe');
+        let entries1 = [];
+        let entries2 = [];
+        if (iframe) {
+            entries1 = [...new Set(Array.from(iframe.contentDocument.querySelectorAll('*')).map(x => x.getAttribute('aria-label')).filter(x => x))];
+            entries2 = [...new Set(Array.from(iframe.contentDocument.querySelectorAll('*')).map(x => x.innerText).filter(x => x))];
+        }
 
-        return [...entries1, ...entries2];
+        let iframeDiv = document.querySelector("#frame");
+        let entries3 = [];
+        let entries4 = [];
+        if (iframeDiv) {
+            entries3 = [...new Set(Array.from(iframeDiv.querySelectorAll('*')).map(x => x.getAttribute('aria-label')).filter(x => x))];
+            entries4 = [...new Set(Array.from(iframeDiv.querySelectorAll('*')).map(x => x.innerText).filter(x => x))];
+        }
+
+        return [...entries1, ...entries2, ...entries3, ...entries4];
     }
 
     if (document.getElementById('divConnectionMonitor')) {
