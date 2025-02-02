@@ -592,7 +592,8 @@
             let queries = extractQuestions();
             queries = queries.filter(q => !q.includes('\n'))
             if (data.question) {
-                queries.unshift(data.question);
+                queries = [data.question];
+                //queries.unshift(data.question);
             }
 
             let queryUrl = url + '?' + queries.map(q => 'questions=' + encodeURIComponent(q)).join('&');
