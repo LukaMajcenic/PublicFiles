@@ -29,7 +29,7 @@
     //Continue button selector
     /*document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]')*/
 
-    const VERSION = "1.6";
+    const VERSION = "1.7";
     const PROD_URL = 'https://localhost:44334/api';
     const TEST_URL = 'https://localhost:44334/api';
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
@@ -482,7 +482,7 @@
         document.getElementById('divConnectionMonitor').classList.add('d-none');
     }
 
-    document.getElementById('').addEventListener("click", () => {
+    document.getElementById('btn-auto-mode').addEventListener("click", () => {
         let chechkbox = document.getElementById('auto-mode-checkbox');
 
         chechkbox.checked = !chechkbox.checked;
