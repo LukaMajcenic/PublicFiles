@@ -26,6 +26,7 @@
         return "#" + RR + GG + BB;
     }
 
+    const VERSION = "1.0";
     const PROD_URL = 'https://localhost:44334/api';
     const TEST_URL = 'https://localhost:44334/api';
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
@@ -713,6 +714,7 @@
 
                 if (response2.ok) {
                     const parsedObject = JSON.parse(await response2.text());
+                    addLogSuccess(VERSION, line());
                     parsedObject.forEach(value => {
                         addLogSuccess(value, line())
                     });
