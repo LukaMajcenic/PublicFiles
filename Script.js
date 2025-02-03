@@ -26,7 +26,7 @@
         return "#" + RR + GG + BB;
     }
 
-    const VERSION = "1.1";
+    const VERSION = "1.2";
     const PROD_URL = 'https://localhost:44334/api';
     const TEST_URL = 'https://localhost:44334/api';
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
@@ -623,10 +623,12 @@
                     
 
                     answerElements.forEach(e => {
-                        document.getElementsByTagName('body')[0].insertAdjacentHTML('beforeend', `
-                            <div class="highlight" style="top: ${e.getBoundingClientRect().top + window.scrollY}px; height: ${e.clientHeight}px">
-                            </div>
-                        `)
+                        if (e) {
+                            document.getElementsByTagName('body')[0].insertAdjacentHTML('beforeend', `
+                                <div class="highlight" style="top: ${e.getBoundingClientRect().top + window.scrollY}px; height: ${e.clientHeight}px">
+                                </div>
+                            `)
+                        }
                     });
                 })
 
