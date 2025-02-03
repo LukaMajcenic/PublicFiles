@@ -26,7 +26,7 @@
         return "#" + RR + GG + BB;
     }
 
-    const VERSION = "1.2";
+    const VERSION = "1.3";
     const PROD_URL = 'https://localhost:44334/api';
     const TEST_URL = 'https://localhost:44334/api';
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
@@ -609,17 +609,19 @@
                 const prettyJsonString = JSON.stringify(parsedObject, null, 2);
                 dataInput.value = prettyJsonString;
 
-                //let iframeElements = Array.from(document.querySelector('iframe').contentDocument.querySelectorAll('*'));
-                let allElements = Array.from(document.querySelectorAll('*'));
+                let iframeElements = Array.from(document.querySelector('iframe').contentDocument.querySelectorAll('*'));
+                //let allElements = Array.from(document.querySelectorAll('*'));
 
                 document.querySelectorAll('.highlight').forEach(e => {
                     e.remove();
                 })
 
                 parsedObject.answers.forEach(ans => {
-                    let answerElements = [];
-                    answerElements.push(allElements.filter(e => e.getAttribute('aria-label')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase())));
-                    answerElements.push(allElements.filter(e => e.getAttribute('data-acc-text')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase())));
+                    //let answerElements = [];
+                    //answerElements.push(allElements.filter(e => e.getAttribute('aria-label')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase())));
+                    //answerElements.push(allElements.filter(e => e.getAttribute('data-acc-text')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase())));
+
+                    let answerElements = iframeElements.filter(e => e.getAttribute('aria-label')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase()))
                     
 
                     answerElements.forEach(e => {
