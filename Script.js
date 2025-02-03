@@ -29,7 +29,7 @@
     //Continue button selector
     /*document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]')*/
 
-    const VERSION = "1.7";
+    const VERSION = "1.8";
     const PROD_URL = 'https://localhost:44334/api';
     const TEST_URL = 'https://localhost:44334/api';
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
@@ -387,22 +387,25 @@
         answers: []
     }, null, 2);
 
-    setInterval(() => {
-        if (document.getElementById('auto-mode-checkbox').checked) {
+    setTimeout(() => {
 
-            let continueButton = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
-            if(continueButton) {
-                try {
-                    continueButton.click();
-                    addLogSuccess('Clicked Continue automatically', line());
-                }
-                catch(e) {
-                    addLogError(e, line());
+        setInterval(() => {
+            if (document.getElementById('auto-mode-checkbox').checked) {
+    
+                let continueButton = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
+                if(continueButton) {
+                    try {
+                        continueButton.click();
+                        addLogSuccess('Clicked Continue automatically', line());
+                    }
+                    catch(e) {
+                        addLogError(e, line());
+                    }
                 }
             }
-        }
-
-    }, 500);
+    
+        }, 500);
+    }, 1000);
 
     function line() {
         var e = new Error();
