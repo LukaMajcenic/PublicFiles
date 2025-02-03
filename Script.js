@@ -29,7 +29,7 @@
     //Continue button selector
     /*document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]')*/
 
-    const VERSION = "1.5";
+    const VERSION = "1.6";
     const PROD_URL = 'https://localhost:44334/api';
     const TEST_URL = 'https://localhost:44334/api';
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
@@ -205,11 +205,11 @@
             background: #00ff0040;
         }
 
-        #btn-auto-mode, #btn-auto-mode2 {
+        #btn-auto-mode {
             margin-right: 2px;
         }
 
-        #btn-auto-mode.pressed, #btn-auto-mode2.pressed {
+        #btn-auto-mode.pressed {
             box-shadow: inset 0px 0px 5px 1px dimgray;
             background: transparent;
         }
@@ -257,8 +257,8 @@
                             <div class="dash dash-right"></div>
                         </div>
                         <div class="d-flex">
-                            <button class="secondary-btn border-left border-right" id="btn-auto-mode2">
-                                <input type="checkbox" id="auto-mode-checkbox2" hidden />
+                            <button class="secondary-btn border-left border-right" id="btn-auto-mode">
+                                <input type="checkbox" id="auto-mode-checkbox" hidden />
                                 ${ICON_LETTER_A}
                             </button>
                             <button class="secondary-btn border-left border-right" id="btn-clear">
@@ -274,10 +274,6 @@
                             <div class="dash dash-right"></div>
                         </div>
                         <div class="d-flex">
-                            <button class="secondary-btn border-left border-right" id="btn-auto-mode">
-                                <input type="checkbox" id="auto-mode-checkbox" hidden />
-                                ${ICON_LETTER_A}
-                            </button>
                             <button class="secondary-btn border-left" id="btn-extract-question">
                                 ${ICON_CODE}
                             </button>
@@ -392,7 +388,7 @@
     }, null, 2);
 
     setInterval(() => {
-        if (document.getElementById('auto-mode-checkbox2').checked) {
+        if (document.getElementById('auto-mode-checkbox').checked) {
 
             let continueButton = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
             if(continueButton) {
@@ -486,7 +482,7 @@
         document.getElementById('divConnectionMonitor').classList.add('d-none');
     }
 
-    document.getElementById('btn-auto-mode').addEventListener("click", () => {
+    document.getElementById('').addEventListener("click", () => {
         let chechkbox = document.getElementById('auto-mode-checkbox');
 
         chechkbox.checked = !chechkbox.checked;
@@ -497,20 +493,6 @@
         }
         else {
             document.getElementById('btn-auto-mode').classList.remove('pressed')
-        }
-    });
-
-    document.getElementById('btn-auto-mode2').addEventListener("click", () => {
-        let chechkbox = document.getElementById('auto-mode-checkbox2');
-
-        chechkbox.checked = !chechkbox.checked;
-
-        document.getElementById('auto-mode-icon-path').setAttribute("fill", chechkbox.checked ? "#00ff00" : "#ff0000");
-        if (chechkbox.checked) {
-            document.getElementById('btn-auto-mode2').classList.add('pressed')
-        }
-        else {
-            document.getElementById('btn-auto-mode2').classList.remove('pressed')
         }
     });
 
@@ -537,26 +519,20 @@
             console.log("2:" + element);
             setQuestion(element.getAttribute("q-value"));
 
-            if (document.getElementById('auto-mode-checkbox').checked) {
-                document.getElementById('btn-extract-question').click();
-            }
+            document.getElementById('btn-extract-question').click();
         })
     });
 
     document.getElementById('btn-set-q-__').addEventListener("click", () => {
         setQuestion('___');
 
-        if (document.getElementById('auto-mode-checkbox').checked) {
-            document.getElementById('btn-extract-question').click();
-        }
+        document.getElementById('btn-extract-question').click();
     });
 
     document.getElementById('btn-set-q-which').addEventListener("click", () => {
         setQuestion('which of the following');
 
-        if (document.getElementById('auto-mode-checkbox').checked) {
-            document.getElementById('btn-extract-question').click();
-        }
+        document.getElementById('btn-extract-question').click();
     });
 
     document.getElementById('btn-set-a-true').addEventListener("click", () => {
@@ -604,10 +580,7 @@
                 Array.from(document.getElementsByClassName('btn-set-q')).forEach(function (element) {
                     element.addEventListener("click", () => {
                         setQuestion(element.getAttribute("q-value"));
-
-                        if (document.getElementById('auto-mode-checkbox').checked) {
-                            document.getElementById('btn-extract-question').click();
-                        }
+                        document.getElementById('btn-extract-question').click();
                         hideModal();
                     })
                 });
