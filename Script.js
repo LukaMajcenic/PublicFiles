@@ -29,7 +29,7 @@
     //Continue button selector
     /*document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]')*/
 
-    const VERSION = "1.4";
+    const VERSION = "1.5";
     const PROD_URL = 'https://localhost:44334/api';
     const TEST_URL = 'https://localhost:44334/api';
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
@@ -205,7 +205,7 @@
             background: #00ff0040;
         }
 
-        #btn-auto-mode {
+        #btn-auto-mode, #btn-auto-mode2 {
             margin-right: 2px;
         }
 
@@ -257,13 +257,13 @@
                             <div class="dash dash-right"></div>
                         </div>
                         <div class="d-flex">
+                            <button class="secondary-btn border-left border-right" id="btn-auto-mode2">
+                                <input type="checkbox" id="auto-mode-checkbox2" hidden />
+                                ${ICON_LETTER_A}
+                            </button>
                             <button class="secondary-btn border-left border-right" id="btn-clear">
                                 ${ICON_TRASH}
                                 Clear
-                            </button>
-                             <button class="secondary-btn border-left border-right" id="btn-auto-mode2">
-                                <input type="checkbox" id="auto-mode-checkbox2" hidden />
-                                ${ICON_LETTER_A}
                             </button>
                         </div>
                     </div>
