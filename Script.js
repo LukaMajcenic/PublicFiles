@@ -26,7 +26,10 @@
         return "#" + RR + GG + BB;
     }
 
-    const VERSION = "1.3";
+    //Continue button selector
+    /*document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]')*/
+
+    const VERSION = "1.4";
     const PROD_URL = 'https://localhost:44334/api';
     const TEST_URL = 'https://localhost:44334/api';
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
@@ -206,7 +209,7 @@
             margin-right: 2px;
         }
 
-        #btn-auto-mode.pressed {
+        #btn-auto-mode.pressed, #btn-auto-mode2.pressed {
             box-shadow: inset 0px 0px 5px 1px dimgray;
             background: transparent;
         }
@@ -257,6 +260,10 @@
                             <button class="secondary-btn border-left border-right" id="btn-clear">
                                 ${ICON_TRASH}
                                 Clear
+                            </button>
+                             <button class="secondary-btn border-left border-right" id="btn-auto-mode2">
+                                <input type="checkbox" id="auto-mode-checkbox2" hidden />
+                                ${ICON_LETTER_A}
                             </button>
                         </div>
                     </div>
@@ -384,6 +391,23 @@
         answers: []
     }, null, 2);
 
+    setInterval(() => {
+        if (document.getElementById('auto-mode-checkbox2').checked) {
+
+            let continueButton = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
+            if(continueButton) {
+                try {
+                    continueButton.click();
+                    addLogSuccess('Clicked Continue automatically', line());
+                }
+                catch(e) {
+                    addLogError(e, line());
+                }
+            }
+        }
+
+    }, 500);
+
     function line() {
         var e = new Error();
         if (!e.stack) try {
@@ -473,6 +497,20 @@
         }
         else {
             document.getElementById('btn-auto-mode').classList.remove('pressed')
+        }
+    });
+
+    document.getElementById('btn-auto-mode2').addEventListener("click", () => {
+        let chechkbox = document.getElementById('auto-mode-checkbox2');
+
+        chechkbox.checked = !chechkbox.checked;
+
+        document.getElementById('auto-mode-icon-path').setAttribute("fill", chechkbox.checked ? "#00ff00" : "#ff0000");
+        if (chechkbox.checked) {
+            document.getElementById('btn-auto-mode2').classList.add('pressed')
+        }
+        else {
+            document.getElementById('btn-auto-mode2').classList.remove('pressed')
         }
     });
 
