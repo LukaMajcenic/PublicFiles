@@ -30,7 +30,7 @@
     /*document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]')*/
 
     const VERSION = "1.8";
-    const PROD_URL = 'https://localhost:44334/api';
+    const PROD_URL = 'https://192.168.1.8:81/api';
     const TEST_URL = 'https://localhost:44334/api';
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
     const COLOR_OF_POST = "#32cd32"; //limegreen
@@ -847,5 +847,6 @@
             document.getElementById('url-text').textContent = url;
         }
     });
+
 
 })();
