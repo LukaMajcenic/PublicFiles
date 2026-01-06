@@ -623,20 +623,22 @@
                 const prettyJsonString = JSON.stringify(parsedObject, null, 2);
                 dataInput.value = prettyJsonString;
 
-                let iframeElements = Array.from(document.querySelector('iframe').contentDocument.querySelectorAll('*'));
-                //let allElements = Array.from(document.querySelectorAll('*'));
+                let allElements = [
+                    ...document.querySelectorAll('*'), // document elements
+                    ...(document.querySelector('iframe')?.contentDocument.querySelectorAll('*') ?? []) // iframe elements
+                ];
 
                 document.querySelectorAll('.highlight').forEach(e => {
                     e.remove();
                 })
 
                 parsedObject.answers.forEach(ans => {
-                    //let answerElements = [];
-                    //answerElements.push(allElements.filter(e => e.getAttribute('aria-label')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase())));
-                    //answerElements.push(allElements.filter(e => e.getAttribute('data-acc-text')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase())));
 
-                    let answerElements = iframeElements.filter(e => e.getAttribute('aria-label')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase()))
-                    
+                    let answerElements = allElements.filter(e => 
+                        e.getAttribute('aria-label')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase())
+                        ||
+                        e.getAttribute('data-acc-text')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase())
+                    );          
 
                     answerElements.forEach(e => {
                         if (e) {
