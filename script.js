@@ -390,7 +390,7 @@
     setTimeout(() => {
 
         setInterval(() => {
-            if (document.getElementById('auto-mode-checkbox').checked) {
+            if (document.getElementById('auto-mode-checkbox')?.checked) {
     
                 let continueButton = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
                 if(continueButton) {
