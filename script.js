@@ -392,10 +392,21 @@
         setInterval(() => {
             if (document.getElementById('auto-mode-checkbox')?.checked) {
     
-                let continueButton = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
-                if(continueButton) {
+                let continueButton1 = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
+                if(continueButton1) {
                     try {
-                        continueButton.click();
+                        continueButton1.click();
+                        addLogSuccess('Clicked Continue automatically', line());
+                    }
+                    catch(e) {
+                        addLogError(e, line());
+                    }
+                }
+
+                let continueButton2 = document.querySelector('[data-acc-text="NEXT"]');
+                if(continueButton2) {
+                    try {
+                        continueButton2.click();
                         addLogSuccess('Clicked Continue automatically', line());
                     }
                     catch(e) {
