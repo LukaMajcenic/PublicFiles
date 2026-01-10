@@ -29,7 +29,6 @@
     //Continue button selector
     /*document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]')*/
 
-    const VERSION = "1.8";
     const PROD_URL = 'https://192.168.1.8:81/api';
     const TEST_URL = 'https://localhost:44334/api';
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
@@ -733,6 +732,7 @@
     document.getElementById('btn-get-info').addEventListener("click", async () => {
 
         try {
+            addLogSuccess("Version: " + GM_info.script.version, line());
             addLogInfo('Fetching status', line());
             const response1 = await fetch(url + "/status", {
                 method: "GET"
@@ -749,7 +749,6 @@
 
                 if (response2.ok) {
                     const parsedObject = JSON.parse(await response2.text());
-                    addLogSuccess("Version: " + VERSION, line());
                     parsedObject.forEach(value => {
                         addLogSuccess(value, line())
                     });
