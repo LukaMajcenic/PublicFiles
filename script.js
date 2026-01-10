@@ -415,7 +415,7 @@
             }
     
         }, 500);
-    }, 1000);
+    }, 10000);
 
     function line() {
         var e = new Error();
