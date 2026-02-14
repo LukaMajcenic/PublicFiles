@@ -29,7 +29,7 @@
     //Continue button selector
     /*document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]')*/
 
-    const PROD_URL = 'https://192.168.1.8:81/api';
+    const PROD_URL = 'https://clicksafety.rpi/api';
     const TEST_URL = 'https://localhost:44334/api';
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
     const COLOR_OF_POST = "#32cd32"; //limegreen
@@ -862,3 +862,4 @@
 
 
 })();
+
