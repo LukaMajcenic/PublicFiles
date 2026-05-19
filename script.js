@@ -621,6 +621,33 @@
 
     });
 
+    function gmRequest(method, url, body = null, headers = {}) {
+        return new Promise((resolve, reject) => {
+            GM_xmlhttpRequest({
+                method,
+                url,
+
+                headers: {
+                    "Content-Type": "application/json",
+                    ...headers
+                },
+
+                data: body ? JSON.stringify(body) : null,
+
+                onload: response => {
+                    resolve({
+                        ok: response.status >= 200 && response.status < 300,
+                        status: response.status,
+                        responseText: response.responseText,
+                        response: response.response
+                    });
+                },
+
+                onerror: reject
+            });
+        });
+    }
+
     document.getElementById('btn-get-question').addEventListener("click", async () => {
 
         try {
@@ -636,9 +663,7 @@
             let queryUrl = url + '?' + queries.map(q => 'questions=' + encodeURIComponent(q)).join('&');
 
             addLogInfo('Fetching question', line());
-            const response = await fetch(queryUrl, {
-                method: "GET"
-            });
+            const response = await gmRequest("GET", queryUrl);
 
             if (response.ok) {
                 const parsedObject = JSON.parse(await response.text()); // Parsing the JSON string
@@ -691,13 +716,14 @@
             let data = JSON.parse(dataInput.value);
 
             addLogInfo('Saving question "' + data.question + '"', line());
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
+            const response = await gmRequest(
+                "POST",
+                url,
+                data,
+                {
                     "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            });
+                }
+            );
 
             if (response.ok) {
                 addLogSuccess('Saved answers for "' + data.question + '"', line())
@@ -719,13 +745,14 @@
                 let data = JSON.parse(dataInput.value);
 
                 addLogInfo('Updating question "' + data.question + '"', line());
-                const response = await fetch(url, {
-                    method: "PUT",
-                    headers: {
+                const response = await gmRequest(
+                    "PUT",
+                    url,
+                    data,
+                    {
                         "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                });
+                    }
+                );
 
                 if (response.ok) {
                     addLogSuccess('Updated answers for "' + data.question + '"', line())
@@ -747,20 +774,9 @@
             addLogSuccess("Version: " + GM_info.script.version, line());
             addLogInfo('Fetching status', line());
 
-            function gmRequest(url) {
-                return new Promise((resolve, reject) => {
-                    GM_xmlhttpRequest({
-                        method: "GET",
-                        url,
-                        onload: response => resolve(response),
-                        onerror: error => reject(error)
-                    });
-                });
-            }
-
             try {
 
-                const response1 = await gmRequest(url + "/status");
+                const response1 = await gmRequest("GET", url + "/status");
 
                 if (response1.status === 200) {
 
@@ -768,7 +784,7 @@
 
                     addLogInfo('Fetching statistics', line());
 
-                    const response2 = await gmRequest(url + "/statistics");
+                    const response2 = await gmRequest("GET", url + "/statistics");
 
                     if (response2.status === 200) {
 
