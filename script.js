@@ -666,7 +666,7 @@
             const response = await gmRequest("GET", queryUrl);
 
             if (response.ok) {
-                const parsedObject = JSON.parse(await response.text()); // Parsing the JSON string
+                const parsedObject = JSON.parse(await response.responseText); // Parsing the JSON string
                 const prettyJsonString = JSON.stringify(parsedObject, null, 2);
                 dataInput.value = prettyJsonString;
 
@@ -701,7 +701,7 @@
             }
             else {
 
-                addLogError(await response.text(), line());
+                addLogError(await response.responseText, line());
             }
         }
         catch (e) {
@@ -729,7 +729,7 @@
                 addLogSuccess('Saved answers for "' + data.question + '"', line())
             }
             else {
-                addLogError(await response.text(), line());
+                addLogError(await response.responseText, line());
             }
         }
         catch (e) {
@@ -758,7 +758,7 @@
                     addLogSuccess('Updated answers for "' + data.question + '"', line())
                 }
                 else {
-                    addLogError(await response.text(), line());
+                    addLogError(await response.responseText, line());
                 }
             }
         }
