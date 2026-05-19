@@ -491,8 +491,10 @@
         //     entries4 = [...new Set(Array.from(iframeDiv.querySelectorAll('*')).map(x => x.innerText).filter(x => x))];
         // }
 
+        console.log(document);
+
         return [
-            document.querySelector('.exam-question.active .question-text').innerText,
+            document.querySelector('.exam-question.active .question-text')?.innerText,
             ...entries1, 
             ...entries2, 
             ...entries3, 
