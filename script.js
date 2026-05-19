@@ -382,7 +382,7 @@
     const dataInput = document.getElementById('data-input');
     const logDiv = document.getElementById('log-div');
 
-    document.querySelector('.website-view')?.style.display = 'none';
+    document?.querySelector('.website-view')?.style.display = 'none';
 
     dataInput.value = JSON.stringify({
         question: "",
