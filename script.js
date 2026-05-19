@@ -746,30 +746,77 @@
         try {
             addLogSuccess("Version: " + GM_info.script.version, line());
             addLogInfo('Fetching status', line());
-            const response1 = await fetch(url + "/status", {
-                method: "GET"
-            });
 
-            if (response1.ok) {
-
-                addLogSuccess(`Status: ${response1.status}`, line())
-
-                addLogInfo('Fetching statistics', line());
-                const response2 = await fetch(url + "/statistics", {
-                    method: "GET"
-                });
-
-                if (response2.ok) {
-                    const parsedObject = JSON.parse(await response2.text());
-                    parsedObject.forEach(value => {
-                        addLogSuccess(value, line())
+            function gmRequest(url) {
+                return new Promise((resolve, reject) => {
+                    GM_xmlhttpRequest({
+                        method: "GET",
+                        url,
+                        onload: response => resolve(response),
+                        onerror: error => reject(error)
                     });
-                }
+                });
             }
-            else {
 
-                addLogError(`Status: ${response1.status}`, line());
+            try {
+
+                const response1 = await gmRequest(url + "/status");
+
+                if (response1.status === 200) {
+
+                    addLogSuccess(`Status: ${response1.status}`, line());
+
+                    addLogInfo('Fetching statistics', line());
+
+                    const response2 = await gmRequest(url + "/statistics");
+
+                    if (response2.status === 200) {
+
+                        const parsedObject = JSON.parse(response2.responseText);
+
+                        parsedObject.forEach(value => {
+                            addLogSuccess(value, line());
+                        });
+
+                    } else {
+
+                        addLogError(`Statistics status: ${response2.status}`, line());
+                    }
+
+                } else {
+
+                    addLogError(`Status: ${response1.status}`, line());
+                }
+
+            } catch (e) {
+
+                addLogError(`Request failed: ${e}`, line());
             }
+
+            // const response1 = await fetch(url + "/status", {
+            //     method: "GET"
+            // });
+
+            // if (response1.ok) {
+
+            //     addLogSuccess(`Status: ${response1.status}`, line())
+
+            //     addLogInfo('Fetching statistics', line());
+            //     const response2 = await fetch(url + "/statistics", {
+            //         method: "GET"
+            //     });
+
+            //     if (response2.ok) {
+            //         const parsedObject = JSON.parse(await response2.text());
+            //         parsedObject.forEach(value => {
+            //             addLogSuccess(value, line())
+            //         });
+            //     }
+            // }
+            // else {
+
+            //     addLogError(`Status: ${response1.status}`, line());
+            // }
         }
         catch (e) {
             addLogError(e, line());
