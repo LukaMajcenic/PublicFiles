@@ -492,13 +492,10 @@
         // }
 
         console.log(document);
-        console.log(document.querySelector('iframe'));
-        console.log(document.querySelector('iframe').contentDocument);
-        console.log(document.querySelector('iframe').contentDocument?.querySelector('.exam-question.active .question-text'));
-        console.log(document.querySelector('iframe')?.querySelector('.exam-question.active .question-text'));
+        console.log(document?.querySelector('.exam-question.active .question-text'));
 
         return [
-            document.querySelector('.exam-question.active .question-text')?.innerText ?? "",
+            document?.querySelector('.exam-question.active .question-text')?.innerText ?? "",
             ...entries1, 
             ...entries2, 
             ...entries3, 
