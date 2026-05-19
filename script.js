@@ -29,7 +29,8 @@
     //Continue button selector
     /*document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]')*/
 
-    const PROD_URL = 'https://clicksafety.rpi/api';
+    //const PROD_URL = 'https://192.168.1.8:81/api';
+    const PROD_URL = 'https://localhost:44334/api';
     const TEST_URL = 'https://localhost:44334/api';
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
     const COLOR_OF_POST = "#32cd32"; //limegreen
@@ -381,6 +382,8 @@
     const dataInput = document.getElementById('data-input');
     const logDiv = document.getElementById('log-div');
 
+    document.querySelector('.website-view')?.style.display = 'none';
+
     dataInput.value = JSON.stringify({
         question: "",
         answers: []
@@ -488,7 +491,13 @@
             entries4 = [...new Set(Array.from(iframeDiv.querySelectorAll('*')).map(x => x.innerText).filter(x => x))];
         }
 
-        return [...entries1, ...entries2, ...entries3, ...entries4];
+        return [
+            document.querySelector('.exam-question.active .question-text').innerText,
+            ...entries1, 
+            ...entries2, 
+            ...entries3, 
+            ...entries4
+        ];
     }
 
     if (document.getElementById('divConnectionMonitor')) {
@@ -862,4 +871,3 @@
 
 
 })();
-
