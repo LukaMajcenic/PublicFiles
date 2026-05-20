@@ -913,9 +913,11 @@
 
     document.getElementById('btn-simulate-log-error').addEventListener('click', function () {
 
+
+
         Array.from(document.querySelectorAll('.exam-question-list.show-feedback .exam-question')).map(e => {
             let question = e.querySelector('.question-text')?.textContent;
-            let answers = Array.from(e.querySelectorAll('.question-option.answer-correct')).map(a => a.textContent);
+            let answers = Array.from(e.querySelectorAll('.question-option.answer-correct')).map(a => a.textContent?.replace("Correct Answer", ""));
 
             if(question && answers.length > 0) {
                 dataInput.value = JSON.stringify({
