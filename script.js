@@ -402,8 +402,12 @@
 
                 if(nextPageBtn && !nextPageBtn.disabled) {
                     addLogInfo('Clause 1: Found next page button and not disabled', line());
-                    nextPageBtn.click();
-                    addLogSuccess('Clause 1: Clicked next page button', line());
+                    let sectionEndNextPageBtn = document.querySelector('#section-end #continue-button');
+                    if(sectionEndNextPageBtn && sectionEndNextPageBtn.style.display !== 'none') {
+                        addLogInfo('Clause 1: Found next page button in section end and not hidden', line());
+                        nextPageBtn.click();
+                        addLogSuccess('Clause 1: Clicked next page button', line());
+                    }
                 }
                 else if (checkButton) {
                     addLogInfo('Clause 2: Found check button', line());
@@ -449,7 +453,7 @@
                 // }
             }
     
-        }, 500);
+        }, 3000);
     }, 5000);
 
     function line() {
