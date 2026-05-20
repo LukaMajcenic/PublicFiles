@@ -393,32 +393,64 @@
 
         setInterval(() => {
             if (document.getElementById('auto-mode-checkbox')?.checked) {
-    
-                let continueButton1 = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
-                if(continueButton1) {
-                    try {
-                        continueButton1.click();
-                        addLogSuccess('Clicked Continue automatically', line());
-                    }
-                    catch(e) {
-                        addLogError(e, line());
-                    }
-                }
+                
+                addLogInfo("Automatic loop", line());
 
-                let continueButton2 = document.querySelector('[data-acc-text="NEXT"]');
-                if(continueButton2) {
-                    try {
-                        continueButton2.click();
-                        addLogSuccess('Clicked Continue automatically', line());
+                let nextPageBtn = document?.querySelector('.next-page-button');
+                let checkButton = document?.querySelector('.id-check-button');
+                let sceneButtons = Array.from(document?.querySelectorAll('.scene-button'));
+
+                if(nextPageBtn && !nextPageBtn.disabled) {
+                    addLogInfo('Clause 1: Found next page button and not disabled', line());
+                    nextPageBtn.click();
+                    addLogSuccess('Clause 1: Clicked next page button', line());
+                }
+                else if (checkButton) {
+                    addLogInfo('Clause 2: Found check button', line());
+                    if(checkButton.disabled) { 
+                        document.querySelector('li.answer.index-1')?.click()
+                        addLogSuccess("Clause 2: li.answer.index-1 clicked", line());
                     }
-                    catch(e) {
-                        addLogError(e, line());
+                    else {
+                        checkButton.click();
+                        addLogSuccess("Clause 2: checkButton clicked", line());
                     }
                 }
+                else if (sceneButtons && sceneButtons.length > 0) {
+                    addLogInfo('Clause 3: Found scene buttons', line());
+                    sceneButtons.forEach(e => {
+                        if(!e.classList.contains('viewed')) {
+                            e.click();
+                            addLogSuccess("Clause 3: sceneButton clicked", line());
+                        }
+                    });
+                }
+    
+                // let continueButton1 = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
+                // if(continueButton1) {
+                //     try {
+                //         continueButton1.click();
+                //         addLogSuccess('Clicked Continue automatically', line());
+                //     }
+                //     catch(e) {
+                //         addLogError(e, line());
+                //     }
+                // }
+
+                // let continueButton2 = document.querySelector('[data-acc-text="NEXT"]');
+                // if(continueButton2) {
+                //     try {
+                //         continueButton2.click();
+                //         addLogSuccess('Clicked Continue automatically', line());
+                //     }
+                //     catch(e) {
+                //         addLogError(e, line());
+                //     }
+                // }
             }
     
         }, 500);
-    }, 10000);
+    }, 5000);
 
     function line() {
         var e = new Error();
