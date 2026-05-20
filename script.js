@@ -343,7 +343,7 @@
                         <div class="d-flex">
                             <button class="secondary-btn border-left" id="btn-simulate-log-success">Success</button>
                             <button class="secondary-btn border-left-none" id="btn-simulate-log-info">Info</button>
-                            <button class="secondary-btn border-right border-left-none" id="btn-simulate-log-error">Error</button>
+                            <button class="secondary-btn border-right border-left-none" id="btn-simulate-log-error">Ex</button>
                         </div>
                     </div>
                     <div>
@@ -685,6 +685,8 @@
                         e.getAttribute('aria-label')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase())
                         ||
                         e.getAttribute('data-acc-text')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase())
+                        ||
+                        (e.classList.contains('option-text') && e.textContent?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase()))
                     );          
 
                     answerElements.forEach(e => {
@@ -911,7 +913,20 @@
 
     document.getElementById('btn-simulate-log-error').addEventListener('click', function () {
 
-        addLogError('LogError simulation', line());
+        Array.from(document.querySelectorAll('.exam-question-list.show-feedback .exam-question')).map(e => {
+            let question = e.querySelector('.question-text')?.textContent;
+            let answers = Array.from(e.querySelectorAll('.question-option.answer-correct')).map(a => a.textContent);
+
+            if(question && answers.length > 0) {
+                dataInput.value = JSON.stringify({
+                    question: question,
+                    answers: answers
+                }, null, 2);
+
+                document.getElementById('btn-post-question').click();
+            }
+        });
+        //addLogError('LogError simulation', line());
     });
 
     document.getElementById('btn-set-url-prod').addEventListener('click', function () {
