@@ -50,6 +50,8 @@
 
     let url = PROD_URL;
 
+
+
     GM_addStyle(`
 
         #container-div {
@@ -882,14 +884,20 @@
     toggleWindowBtn.addEventListener('click', function () {
 
         let container = document.getElementById('container-div');
+        let btnToggleModal = document.getElementById('btn-toggle-modal');
+        let btnToggleSettings = document.getElementById('btn-toggle-settings');
 
         if (container.style.display == 'none') {
             container.style.display = 'flex';
             toggleWindowBtn.innerHTML = ICON_EYE_SEE
+            btnToggleModal.style.display = '';
+            btnToggleSettings.style.display = '';
         }
         else {
             container.style.display = 'none';
             toggleWindowBtn.innerHTML = ICON_EYE_HIDE;
+            btnToggleModal.style.display = 'none';
+            btnToggleSettings.style.display = 'none';
         }
     });
 
