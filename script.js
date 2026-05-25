@@ -35,18 +35,20 @@
     const COLOR_OF_GET = "#1e90ff"; //dodgerblue
     const COLOR_OF_POST = "#32cd32"; //limegreen
     const COLOR_OF_PUT = "#ff8c00"; //darkorange
+    const COLOR_OF_GET_PRESSED = "#115ba2";
     const ICON_TRASH = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>';
-    const ICON_LETTER_A = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 384 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path id="auto-mode-icon-path" fill="#ff0000" d="M221.5 51.7C216.6 39.8 204.9 32 192 32s-24.6 7.8-29.5 19.7l-120 288-40 96c-6.8 16.3 .9 35 17.2 41.8s35-.9 41.8-17.2L93.3 384l197.3 0 31.8 76.3c6.8 16.3 25.5 24 41.8 17.2s24-25.5 17.2-41.8l-40-96-120-288zM264 320l-144 0 72-172.8L264 320z"/></svg>';
+    const ICON_TRASH_AUTO = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path id="icon-trash-auto-path" fill="#ffffff4d" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>';
     const ICON_CODE = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg>';
     const ICON_UPLOAD = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg>';
     const ICON_DOWNLOAD = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M288 109.3V352c0 17.7-14.3 32-32 32s-32-14.3-32-32V109.3l-73.4 73.4c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l128-128c12.5-12.5 32.8-12.5 45.3 0l128 128c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L288 109.3zM64 352H192c0 35.3 28.7 64 64 64s64-28.7 64-64H448c35.3 0 64 28.7 64 64v32c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V416c0-35.3 28.7-64 64-64zM432 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"/></svg>';
-    const ICON_EYE_SEE = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg>';
-    const ICON_EYE_HIDE = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"/></svg>';
+    const ICON_EYE_SEE = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path id="icon_eye_see_path" fill="#ffffff" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg>';
+    const ICON_EYE_HIDE = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path id="icon_eye_hide_path" fill="#ffffff" d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"/></svg>';
     const ICON_WINDOW_MAXIMIZE = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM96 96l320 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L96 160c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>';
     const ICON_WINDOW_MINIMIZE = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M32 416c-17.7 0-32 14.3-32 32s14.3 32 32 32l448 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 416z"/></svg>';
     const ICON_BUG = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M256 0c53 0 96 43 96 96l0 3.6c0 15.7-12.7 28.4-28.4 28.4l-135.1 0c-15.7 0-28.4-12.7-28.4-28.4l0-3.6c0-53 43-96 96-96zM41.4 105.4c12.5-12.5 32.8-12.5 45.3 0l64 64c.7 .7 1.3 1.4 1.9 2.1c14.2-7.3 30.4-11.4 47.5-11.4l112 0c17.1 0 33.2 4.1 47.5 11.4c.6-.7 1.2-1.4 1.9-2.1l64-64c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-64 64c-.7 .7-1.4 1.3-2.1 1.9c6.2 12 10.1 25.3 11.1 39.5l64.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c0 24.6-5.5 47.8-15.4 68.6c2.2 1.3 4.2 2.9 6 4.8l64 64c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0l-63.1-63.1c-24.5 21.8-55.8 36.2-90.3 39.6L272 240c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 239.2c-34.5-3.4-65.8-17.8-90.3-39.6L86.6 502.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l64-64c1.9-1.9 3.9-3.4 6-4.8C101.5 367.8 96 344.6 96 320l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64.3 0c1.1-14.1 5-27.5 11.1-39.5c-.7-.6-1.4-1.2-2.1-1.9l-64-64c-12.5-12.5-12.5-32.8 0-45.3z"/></svg>';
     const ICON_BUG_SLASH = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L477.4 348.9c1.7-9.4 2.6-19 2.6-28.9l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64.3 0c-1.1-14.1-5-27.5-11.1-39.5c.7-.6 1.4-1.2 2.1-1.9l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-.7 .7-1.3 1.4-1.9 2.1C409.2 164.1 393.1 160 376 160l-112 0c-8.3 0-16.3 1-24 2.8L38.8 5.1zM320 0c-53 0-96 43-96 96l0 3.6c0 15.7 12.7 28.4 28.4 28.4l135.1 0c15.7 0 28.4-12.7 28.4-28.4l0-3.6c0-53-43-96-96-96zM160.3 256L96 256c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0c0 24.6 5.5 47.8 15.4 68.6c-2.2 1.3-4.2 2.9-6 4.8l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l63.1-63.1c24.5 21.8 55.8 36.2 90.3 39.6l0-143.7L166.7 227.3c-3.4 9-5.6 18.7-6.4 28.7zM336 479.2c36.6-3.6 69.7-19.6 94.8-43.8L336 360.7l0 118.5z"/></svg>';
     const ICON_KEYBOARD = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M64 112c-8.8 0-16 7.2-16 16l0 256c0 8.8 7.2 16 16 16l448 0c8.8 0 16-7.2 16-16l0-256c0-8.8-7.2-16-16-16L64 112zM0 128C0 92.7 28.7 64 64 64l448 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128zM176 320l224 0c8.8 0 16 7.2 16 16l0 16c0 8.8-7.2 16-16 16l-224 0c-8.8 0-16-7.2-16-16l0-16c0-8.8 7.2-16 16-16zm-72-72c0-8.8 7.2-16 16-16l16 0c8.8 0 16 7.2 16 16l0 16c0 8.8-7.2 16-16 16l-16 0c-8.8 0-16-7.2-16-16l0-16zm16-96l16 0c8.8 0 16 7.2 16 16l0 16c0 8.8-7.2 16-16 16l-16 0c-8.8 0-16-7.2-16-16l0-16c0-8.8 7.2-16 16-16zm64 96c0-8.8 7.2-16 16-16l16 0c8.8 0 16 7.2 16 16l0 16c0 8.8-7.2 16-16 16l-16 0c-8.8 0-16-7.2-16-16l0-16zm16-96l16 0c8.8 0 16 7.2 16 16l0 16c0 8.8-7.2 16-16 16l-16 0c-8.8 0-16-7.2-16-16l0-16c0-8.8 7.2-16 16-16zm64 96c0-8.8 7.2-16 16-16l16 0c8.8 0 16 7.2 16 16l0 16c0 8.8-7.2 16-16 16l-16 0c-8.8 0-16-7.2-16-16l0-16zm16-96l16 0c8.8 0 16 7.2 16 16l0 16c0 8.8-7.2 16-16 16l-16 0c-8.8 0-16-7.2-16-16l0-16c0-8.8 7.2-16 16-16zm64 96c0-8.8 7.2-16 16-16l16 0c8.8 0 16 7.2 16 16l0 16c0 8.8-7.2 16-16 16l-16 0c-8.8 0-16-7.2-16-16l0-16zm16-96l16 0c8.8 0 16 7.2 16 16l0 16c0 8.8-7.2 16-16 16l-16 0c-8.8 0-16-7.2-16-16l0-16c0-8.8 7.2-16 16-16zm64 96c0-8.8 7.2-16 16-16l16 0c8.8 0 16 7.2 16 16l0 16c0 8.8-7.2 16-16 16l-16 0c-8.8 0-16-7.2-16-16l0-16zm16-96l16 0c8.8 0 16 7.2 16 16l0 16c0 8.8-7.2 16-16 16l-16 0c-8.8 0-16-7.2-16-16l0-16c0-8.8 7.2-16 16-16z"/></svg>';
+    const ICON_ROBOT = '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path id="icon-robot-path" fill="#ffffff4d" d="M352 64C352 46.3 337.7 32 320 32C302.3 32 288 46.3 288 64L288 128L192 128C139 128 96 171 96 224L96 448C96 501 139 544 192 544L448 544C501 544 544 501 544 448L544 224C544 171 501 128 448 128L352 128L352 64zM160 432C160 418.7 170.7 408 184 408L216 408C229.3 408 240 418.7 240 432C240 445.3 229.3 456 216 456L184 456C170.7 456 160 445.3 160 432zM280 432C280 418.7 290.7 408 304 408L336 408C349.3 408 360 418.7 360 432C360 445.3 349.3 456 336 456L304 456C290.7 456 280 445.3 280 432zM400 432C400 418.7 410.7 408 424 408L456 408C469.3 408 480 418.7 480 432C480 445.3 469.3 456 456 456L424 456C410.7 456 400 445.3 400 432zM224 240C250.5 240 272 261.5 272 288C272 314.5 250.5 336 224 336C197.5 336 176 314.5 176 288C176 261.5 197.5 240 224 240zM368 288C368 261.5 389.5 240 416 240C442.5 240 464 261.5 464 288C464 314.5 442.5 336 416 336C389.5 336 368 314.5 368 288zM64 288C64 270.3 49.7 256 32 256C14.3 256 0 270.3 0 288L0 384C0 401.7 14.3 416 32 416C49.7 416 64 401.7 64 384L64 288zM608 256C590.3 256 576 270.3 576 288L576 384C576 401.7 590.3 416 608 416C625.7 416 640 401.7 640 384L640 288C640 270.3 625.7 256 608 256z"/></svg>';
 
     let url = PROD_URL;
 
@@ -89,6 +91,7 @@
             background: #0006;
             padding: 8px;
             scrollbar-width: none;
+            font-size: small;
         }
 
         #log-div::-webkit-scrollbar {
@@ -175,16 +178,19 @@
             border-left: 0;
         }
 
-        #btn-get-question, #btn-get-info {
+        #btn-get-question, #btn-get-info, #btn-auto-clear {
             background: ${COLOR_OF_GET};
             border-color: ${COLOR_OF_GET};
         }
 
-        #btn-post-question {
+        #btn-auto-clear.pressed {
+            box-shadow: inset 0px 0px 5px 1px ${COLOR_OF_GET_PRESSED};
+        }
+
+        #btn-post-question, #btn-extract-questions {
             background: ${COLOR_OF_POST};
             border-color: ${COLOR_OF_POST};
         }
-
         
         #btn-put-question {
             background: ${COLOR_OF_PUT};
@@ -259,9 +265,10 @@
                             <div class="dash dash-right"></div>
                         </div>
                         <div class="d-flex">
-                            <button class="secondary-btn border-left border-right" id="btn-auto-mode">
+                            <button class="secondary-btn border-left border-right" id="btn-auto-mode" style="color: #ffffff4d">
                                 <input type="checkbox" id="auto-mode-checkbox" hidden />
-                                ${ICON_LETTER_A}
+                                ${ICON_ROBOT}
+                                Automatic
                             </button>
                             <button class="secondary-btn border-left border-right" id="btn-clear">
                                 ${ICON_TRASH}
@@ -283,7 +290,7 @@
                                 "__"
                             </button>
                             <button class="secondary-btn border-right border-left-none" id="btn-set-q-which">
-                                "Which..."
+                                "Wh"
                             </button>
                         </div>
                     </div>
@@ -294,8 +301,8 @@
                             <div class="dash dash-right"></div>
                         </div>
                         <div class="d-flex">
-                            <button class="secondary-btn border-left" id="btn-set-a-true">"True"</button>
-                            <button class="secondary-btn border-right border-left-none" id="btn-set-a-false">"False"</button>
+                            <button class="secondary-btn border-left" id="btn-set-a-true">"T"</button>
+                            <button class="secondary-btn border-right border-left-none" id="btn-set-a-false">"F"</button>
                         </div>
                     </div>
                 </div>
@@ -303,22 +310,23 @@
                     <div>
                         <div class="title">
                             <div class="dash dash-left"></div>
-                            Questions
+                            API
                             <div class="dash dash-right"></div>
                             </div>
                         <div class="d-flex">
-                            <button class="secondary-btn border-left" id="btn-get-question">
+                            <button class="secondary-btn border-left" id="btn-auto-clear">
+                                <input type="checkbox" id="auto-clear-checkbox" hidden />
+                                ${ICON_TRASH_AUTO}
+                            </button>
+                            <button class="secondary-btn" id="btn-get-question">
                                 ${ICON_UPLOAD}
-                                <b>GET</b>
                                 <span id="url-text">${url}<span>
                             </button>
                             <button class="secondary-btn" id="btn-post-question">
                                 ${ICON_DOWNLOAD}
-                                <b>POST</b>
                             </button>
                             <button class="secondary-btn border-right" id="btn-put-question">
                                 ${ICON_DOWNLOAD}
-                                <b>PUT</b>
                             </button>
                         </div>
                     </div>
@@ -339,25 +347,17 @@
                     <div>
                         <div class="title">
                             <div class="dash dash-left"></div>
-                            Simulate log
+                                API
                             <div class="dash dash-right"></div>
                         </div>
                         <div class="d-flex">
-                            <button class="secondary-btn border-left" id="btn-simulate-log-success">Success</button>
-                            <button class="secondary-btn border-left-none" id="btn-simulate-log-info">Info</button>
-                            <button class="secondary-btn border-right border-left-none" id="btn-simulate-log-error">Ex</button>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="title">
-                            <div class="dash dash-left"></div>
-                                Info
-                            <div class="dash dash-right"></div>
-                        </div>
-                        <div class="d-flex">
-                            <button class="secondary-btn border-left border-right" id="btn-get-info">
+                            <button class="secondary-btn border-left" id="btn-get-info">
                                 ${ICON_UPLOAD}
-                                <b>GET</b>
+                                Info
+                            </button>
+                            <button class="secondary-btn border-right" id="btn-extract-questions">
+                                ${ICON_DOWNLOAD}
+                                Extract
                             </button>
                         </div>
                     </div>
@@ -550,12 +550,29 @@
 
         chechkbox.checked = !chechkbox.checked;
 
-        document.getElementById('auto-mode-icon-path').setAttribute("fill", chechkbox.checked ? "#00ff00" : "#ff0000");
+        document.getElementById('icon-robot-path').setAttribute("fill", chechkbox.checked ? "#00ff00" : "#ffffff4d");
+        document.getElementById('icon_eye_see_path')?.setAttribute("fill", chechkbox.checked ? "#00ff00" : "#ffffff");
+        document.getElementById('icon_eye_hide_path')?.setAttribute("fill", chechkbox.checked ? "#00ff00" : "#ffffff");
+        document.getElementById('btn-auto-mode').style.color = chechkbox.checked ? "#00ff00" : "#ffffff4d";
         if (chechkbox.checked) {
-            document.getElementById('btn-auto-mode').classList.add('pressed')
+            document.getElementById('btn-auto-mode').classList.add('pressed');
         }
         else {
             document.getElementById('btn-auto-mode').classList.remove('pressed')
+        }
+    });
+
+    document.getElementById('btn-auto-clear').addEventListener("click", () => {
+        let chechkbox = document.getElementById('auto-clear-checkbox');
+
+        chechkbox.checked = !chechkbox.checked;
+
+        document.getElementById('icon-trash-auto-path').setAttribute("fill", chechkbox.checked ? "#00ff00" : "#ffffff4d");
+        if (chechkbox.checked) {
+            document.getElementById('btn-auto-clear').classList.add('pressed');
+        }
+        else {
+            document.getElementById('btn-auto-clear').classList.remove('pressed')
         }
     });
 
@@ -689,7 +706,11 @@
     document.getElementById('btn-get-question').addEventListener("click", async () => {
 
         try {
-            //TODO: Accept only one question
+            
+            if(document.getElementById('auto-clear-checkbox').checked) {
+                document.getElementById('btn-clear').click();
+            }
+
             let data = JSON.parse(dataInput.value);
             let queries = extractQuestions();
             queries = queries.filter(q => !q.includes('\n'))
@@ -899,6 +920,10 @@
             btnToggleModal.style.display = 'none';
             btnToggleSettings.style.display = 'none';
         }
+
+        let chechkbox = document.getElementById('auto-mode-checkbox');
+        document.getElementById('icon_eye_see_path')?.setAttribute("fill", chechkbox.checked ? "#00ff00" : "#ffffff");
+        document.getElementById('icon_eye_hide_path')?.setAttribute("fill", chechkbox.checked ? "#00ff00" : "#ffffff");
     });
 
     let toggleSettingsBtn = document.getElementById('btn-toggle-settings');
@@ -945,19 +970,7 @@
         }
     });
 
-    document.getElementById('btn-simulate-log-success').addEventListener('click', function () {
-
-        addLogSuccess('LogSuccess simulation', line());
-    });
-
-    document.getElementById('btn-simulate-log-info').addEventListener('click', function () {
-
-        addLogInfo('LogInfo simulation', line());
-    });
-
-    document.getElementById('btn-simulate-log-error').addEventListener('click', function () {
-
-
+    document.getElementById('btn-extract-questions').addEventListener('click', function () {
 
         Array.from(document.querySelectorAll('.exam-question-list.show-feedback .exam-question')).map(e => {
             let question = e.querySelector('.question-text')?.textContent;
@@ -972,7 +985,6 @@
                 document.getElementById('btn-post-question').click();
             }
         });
-        //addLogError('LogError simulation', line());
     });
 
     document.getElementById('btn-set-url-prod').addEventListener('click', function () {
