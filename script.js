@@ -743,6 +743,12 @@
                         e.getAttribute('data-acc-text')?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase())
                         ||
                         (e.classList.contains('option-text') && e.textContent?.replace(/\s/g, "")?.toLowerCase()?.includes(ans.replace(/\s/g, "").toLowerCase()))
+                        ||
+                        (e.matches('[data-testid="quiz-mc-option-text"]') &&
+                            [...e.querySelectorAll('p')].some(p =>
+                                p.textContent?.replace(/\s/g, "").toLowerCase()
+                                    .includes(ans.replace(/\s/g, "").toLowerCase())
+                            ))
                     );          
 
                     answerElements.forEach(e => {
