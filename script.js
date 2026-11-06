@@ -401,7 +401,7 @@
                 let nextPageBtn = document?.querySelector('.next-page-button');
                 let checkButton = document?.querySelector('.id-check-button');
                 let sceneButtons = Array.from(document?.querySelectorAll('.scene-button'));
-                let continueBtn = document?.querySelector('.continue-btn');
+                let continueBtn = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelector('.continue-btn');
 
                 if(nextPageBtn && !nextPageBtn.disabled) {
                     addLogInfo('Clause 1: Found next page button and not disabled', line());
@@ -719,7 +719,7 @@
             queries = queries
                         .filter(q => !q.includes('\n') && q.includes(" "))
                         .sort((a, b) => b.length - a.length)
-                        .slice(0, 10);;
+                        .slice(0, 10);
             if (data.question) {
                 queries = [data.question];
                 //queries.unshift(data.question);
