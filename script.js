@@ -401,6 +401,7 @@
                 let nextPageBtn = document?.querySelector('.next-page-button');
                 let checkButton = document?.querySelector('.id-check-button');
                 let sceneButtons = Array.from(document?.querySelectorAll('.scene-button'));
+                let continueBtn = document?.querySelector('.continue-btn');
 
                 if(nextPageBtn && !nextPageBtn.disabled) {
                     addLogInfo('Clause 1: Found next page button and not disabled', line());
@@ -430,6 +431,11 @@
                             addLogSuccess("Clause 3: sceneButton clicked", line());
                         }
                     });
+                }
+                else if(continueBtn && !continueBtn.disabled) {
+                    addLogInfo('Clause 4: Found continue button and not disabled', line());
+                    continueBtn.click();
+                    addLogSuccess('Clause 4: Clicked continue button', line());
                 }
     
                 // let continueButton1 = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
@@ -529,13 +535,24 @@
             entries4 = [...new Set(Array.from(iframeDiv.querySelectorAll('*')).map(x => x.innerText).filter(x => x))];
         }
 
-        return [
+        /*
+        Keeps entries that:
+            - Don't contain \n.
+            - Contain at least one space.
+            - Have at least 8 characters.
+            - Are unique.
+        */
+        return [...new Set([
             document?.querySelector('.exam-question.active .question-text')?.innerText ?? "",
-            ...entries1, 
-            ...entries2, 
-            ...entries3, 
+            ...entries1,
+            ...entries2,
+            ...entries3,
             ...entries4
-        ];
+        ].filter(e =>
+            !e.includes("\n") &&
+            e.includes(" ") &&
+            e.length >= 8
+        ))];
     }
 
     if (document.getElementById('divConnectionMonitor')) {
