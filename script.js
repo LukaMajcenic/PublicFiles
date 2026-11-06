@@ -719,7 +719,7 @@
             queries = queries
                         .filter(q => !q.includes('\n') && q.includes(" "))
                         .sort((a, b) => b.length - a.length)
-                        .slice(0, 20);;
+                        .slice(0, 10);;
             if (data.question) {
                 queries = [data.question];
                 //queries.unshift(data.question);
