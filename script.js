@@ -535,24 +535,13 @@
             entries4 = [...new Set(Array.from(iframeDiv.querySelectorAll('*')).map(x => x.innerText).filter(x => x))];
         }
 
-        /*
-        Keeps entries that:
-            - Don't contain \n.
-            - Contain at least one space.
-            - Have at least 8 characters.
-            - Are unique.
-        */
-        return [...new Set([
+        return [
             document?.querySelector('.exam-question.active .question-text')?.innerText ?? "",
-            ...entries1,
-            ...entries2,
-            ...entries3,
+            ...entries1, 
+            ...entries2, 
+            ...entries3, 
             ...entries4
-        ].filter(e =>
-            !e.includes("\n") &&
-            e.includes(" ") &&
-            e.length >= 8
-        ))];
+        ];
     }
 
     if (document.getElementById('divConnectionMonitor')) {
@@ -727,7 +716,10 @@
 
             let data = JSON.parse(dataInput.value);
             let queries = extractQuestions();
-            queries = queries.filter(q => !q.includes('\n'))
+            queries = queries
+                        .filter(q => !q.includes('\n') && q.includes(" "))
+                        .sort((a, b) => b.length - a.length)
+                        .slice(0, 20);;
             if (data.question) {
                 queries = [data.question];
                 //queries.unshift(data.question);
