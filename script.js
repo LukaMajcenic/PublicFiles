@@ -402,6 +402,7 @@
                 let checkButton = document?.querySelector('.id-check-button');
                 let sceneButtons = Array.from(document?.querySelectorAll('.scene-button'));
                 let continueBtn = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelector('.continue-btn');
+                let lessonNavLink = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelector('.lesson-nav-link__link.lesson-nav-link__link--theme-default');
 
                 if(nextPageBtn && !nextPageBtn.disabled) {
                     addLogInfo('Clause 1: Found next page button and not disabled', line());
@@ -436,6 +437,11 @@
                     addLogInfo('Clause 4: Found continue button and not disabled', line());
                     continueBtn.click();
                     addLogSuccess('Clause 4: Clicked continue button', line());
+                }
+                else if(lessonNavLink) {
+                    addLogInfo('Clause 5: Found lesson nav link', line());
+                    lessonNavLink.click();
+                    addLogSuccess('Clause 5: Clicked lesson nav link', line());
                 }
     
                 // let continueButton1 = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
