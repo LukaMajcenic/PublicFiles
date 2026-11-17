@@ -402,7 +402,7 @@
                 let checkButton = document?.querySelector('.id-check-button');
                 let sceneButtons = Array.from(document?.querySelectorAll('.scene-button'));
                 let continueBtn = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelector('.continue-btn');
-                let lessonNavLink = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelector('.lesson-nav-link__link.lesson-nav-link__link--theme-default');
+                let lessonNavLink = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelector('.lesson-nav-link__link.lesson-nav-link__link--theme-default[data-direction="next"]');
 
                 if(nextPageBtn && !nextPageBtn.disabled) {
                     addLogInfo('Clause 1: Found next page button and not disabled', line());
