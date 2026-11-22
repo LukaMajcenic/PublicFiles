@@ -262,7 +262,7 @@
         }
 
         #btn-auto-mode.pulse>svg {
-            animation: robot-pulse 0.5s ease-in-out infinite;
+            animation: robot-pulse 0.5s ease-in-out;
         }
     `);
 
