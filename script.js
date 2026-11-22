@@ -407,6 +407,7 @@
                 let continueBtn = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelector('.continue-btn');
                 let lessonNavLink = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelector('.lesson-nav-link__link.lesson-nav-link__link--theme-default[data-direction="next"]');
                 let flashcards = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelectorAll('li.flashcard:not(.flashcard--flipped)');
+                let accordionButtons = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelectorAll('button.blocks-accordion__header[aria-expanded="false"]');
 
 
                 if(nextPageBtn && !nextPageBtn.disabled) {
@@ -453,6 +454,13 @@
                     flashcards.forEach(e => {
                         e.click();
                         addLogSuccess("Clause 6: flashcard clicked", line());
+                    });
+                }
+                else if (accordionButtons && accordionButtons.length > 0) {
+                    addLogInfo('Clause 6: Found accordion buttons', line());
+                    accordionButtons.forEach(e => {
+                        e.click();
+                        addLogSuccess("Clause 6: accordion button clicked", line());
                     });
                 }
     
