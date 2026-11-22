@@ -406,6 +406,8 @@
                 let sceneButtons = Array.from(document?.querySelectorAll('.scene-button'));
                 let continueBtn = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelector('.continue-btn');
                 let lessonNavLink = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelector('.lesson-nav-link__link.lesson-nav-link__link--theme-default[data-direction="next"]');
+                let flashcards = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelectorAll('li.flashcard:not(.flashcard--flipped)');
+
 
                 if(nextPageBtn && !nextPageBtn.disabled) {
                     addLogInfo('Clause 1: Found next page button and not disabled', line());
@@ -445,6 +447,13 @@
                     addLogInfo('Clause 5: Found lesson nav link', line());
                     lessonNavLink.click();
                     addLogSuccess('Clause 5: Clicked lesson nav link', line());
+                }
+                else if (flashcards && flashcards.length > 0) {
+                    addLogInfo('Clause 6: Found flashcards', line());
+                    flashcards.forEach(e => {
+                        e.click();
+                        addLogSuccess("Clause 6: flashcard clicked", line());
+                    });
                 }
     
                 // let continueButton1 = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
