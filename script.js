@@ -251,6 +251,19 @@
         .d-none {
             display: none !important;
         }
+
+        @keyframes robot-pulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 0px rgba(0, 255, 0, 0));
+            }
+            50% {
+                filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.9));
+            }
+        }
+
+        #btn-auto-mode.pulse>svg {
+            animation: robot-pulse 0.5s ease-in-out infinite;
+        }
     `);
 
     document.getElementsByTagName('body')[0].insertAdjacentHTML('beforeend', `
@@ -289,8 +302,11 @@
                             <button class="secondary-btn border-left-none" id="btn-set-q-__">
                                 "__"
                             </button>
-                            <button class="secondary-btn border-right border-left-none" id="btn-set-q-which">
-                                "Wh"
+                            <button class="secondary-btn border-left-none" id="btn-set-q-which">
+                                "Whi"
+                            </button>
+                            <button class="secondary-btn border-right border-left-none" id="btn-set-q-what-is">
+                                "Wha"
                             </button>
                         </div>
                     </div>
@@ -399,6 +415,7 @@
         setInterval(() => {
             if (document.getElementById('auto-mode-checkbox')?.checked) {
                 
+                document.getElementById('btn-auto-mode').classList.remove('pulse');
                 addLogInfo("Automatic loop", line());
 
                 let nextPageBtn = document?.querySelector('.next-page-button');
@@ -417,6 +434,7 @@
                         addLogInfo('Clause 1: Found next page button in section end and not hidden', line());
                         nextPageBtn.click();
                         addLogSuccess('Clause 1: Clicked next page button', line());
+                        document.getElementById('btn-auto-mode').classList.add('pulse');
                     }
                 }
                 else if (checkButton) {
@@ -424,10 +442,12 @@
                     if(checkButton.disabled) { 
                         document.querySelector('li.answer.index-1')?.click()
                         addLogSuccess("Clause 2: li.answer.index-1 clicked", line());
+                        document.getElementById('btn-auto-mode').classList.add('pulse');
                     }
                     else {
                         checkButton.click();
                         addLogSuccess("Clause 2: checkButton clicked", line());
+                        document.getElementById('btn-auto-mode').classList.add('pulse');
                     }
                 }
                 else if (sceneButtons && sceneButtons.length > 0) {
@@ -436,6 +456,7 @@
                         if(!e.classList.contains('viewed')) {
                             e.click();
                             addLogSuccess("Clause 3: sceneButton clicked", line());
+                            document.getElementById('btn-auto-mode').classList.add('pulse');
                         }
                     });
                 }
@@ -443,24 +464,28 @@
                     addLogInfo('Clause 4: Found continue button and not disabled', line());
                     continueBtn.click();
                     addLogSuccess('Clause 4: Clicked continue button', line());
+                    document.getElementById('btn-auto-mode').classList.add('pulse');
                 }
                 else if(lessonNavLink) {
                     addLogInfo('Clause 5: Found lesson nav link', line());
                     lessonNavLink.click();
                     addLogSuccess('Clause 5: Clicked lesson nav link', line());
+                    document.getElementById('btn-auto-mode').classList.add('pulse');
                 }
                 else if (flashcards && flashcards.length > 0) {
                     addLogInfo('Clause 6: Found flashcards', line());
                     flashcards.forEach(e => {
                         e.click();
                         addLogSuccess("Clause 6: flashcard clicked", line());
+                        document.getElementById('btn-auto-mode').classList.add('pulse');
                     });
                 }
                 else if (accordionButtons && accordionButtons.length > 0) {
-                    addLogInfo('Clause 6: Found accordion buttons', line());
+                    addLogInfo('Clause 7: Found accordion buttons', line());
                     accordionButtons.forEach(e => {
                         e.click();
-                        addLogSuccess("Clause 6: accordion button clicked", line());
+                        addLogSuccess("Clause 7: accordion button clicked", line());
+                        document.getElementById('btn-auto-mode').classList.add('pulse');
                     });
                 }
     
@@ -640,6 +665,12 @@
 
     document.getElementById('btn-set-q-which').addEventListener("click", () => {
         setQuestion('which of the following');
+
+        document.getElementById('btn-extract-question').click();
+    });
+
+    document.getElementById('btn-set-q-what-is').addEventListener("click", () => {
+        setQuestion('what is');
 
         document.getElementById('btn-extract-question').click();
     });
