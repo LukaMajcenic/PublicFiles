@@ -301,7 +301,10 @@
                             <div class="dash dash-right"></div>
                         </div>
                         <div class="d-flex">
-                            <button class="secondary-btn border-left" id="btn-set-a-true">"T"</button>
+                            <button class="secondary-btn border-left" id="btn-extract-answer">
+                                ${ICON_CODE}
+                            </button>
+                            <button class="secondary-btn border-left-none" id="btn-set-a-true">"T"</button>
                             <button class="secondary-btn border-right border-left-none" id="btn-set-a-false">"F"</button>
                         </div>
                     </div>
@@ -524,7 +527,7 @@
         logDiv.scrollTop = logDiv.scrollHeight;
     }
 
-    function extractQuestions() {
+    function extractText() {
         let iframe = document.querySelector('iframe');
         let entries1 = [];
         let entries2 = [];
@@ -642,7 +645,7 @@
 
         try {
             let data = JSON.parse(dataInput.value);
-            let filteredEntries = extractQuestions();
+            let filteredEntries = extractText();
 
             filteredEntries = filteredEntries.filter(item =>
                 item.replace(/\s/g, "").toLowerCase().includes(data.question.replace(/\s/g, "").toLowerCase())
@@ -676,6 +679,53 @@
             }
             else {
                 addLogError("Failed to extract question", line());
+            }
+
+        }
+        catch (e) {
+            addLogError(e, line());
+        }
+
+    });
+
+    document.getElementById('btn-extract-answer').addEventListener("click", () => {
+
+        try {
+            let data = JSON.parse(dataInput.value);
+            let filteredEntries = extractText();
+
+            filteredEntries = filteredEntries.filter(item =>
+                item.replace(/\s/g, "").toLowerCase().includes(data.answers[0].replace(/\s/g, "").toLowerCase())
+            ).sort((a, b) => a.length - b.length)
+
+            if (filteredEntries.length != 0) {
+                addLogInfo('Length of filtered is ' + filteredEntries.length, line())
+
+                dataInput.value = JSON.stringify({
+                    question: data.question,
+                    answers: [filteredEntries[0].trim()]
+                }, null, 2);
+
+                /*document.getElementById('modal').innerHTML = "";
+                
+                filteredEntries.forEach(text => {
+                    document.getElementById('modal').insertAdjacentHTML('beforeend', `
+                        <button class="btn-set-q secondary-btn border-left border-right" q-value="${text}">
+                        "${text}"
+                        </button>
+                        `)
+                })
+
+                Array.from(document.getElementsByClassName('btn-set-q')).forEach(function (element) {
+                    element.addEventListener("click", () => {
+                        setQuestion(element.getAttribute("q-value"));
+                        document.getElementById('btn-extract-question').click();
+                        hideModal();
+                    })
+                });*/
+            }
+            else {
+                addLogError("Failed to extract answer", line());
             }
 
         }
@@ -721,7 +771,7 @@
             }
 
             let data = JSON.parse(dataInput.value);
-            let queries = extractQuestions();
+            let queries = extractText();
             queries = queries
                         .filter(q => !q.includes('\n') && q.includes(" "))
                         .sort((a, b) => b.length - a.length)
