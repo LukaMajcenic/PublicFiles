@@ -425,7 +425,7 @@
                 let lessonNavLink = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelector('.lesson-nav-link__link.lesson-nav-link__link--theme-default[data-direction="next"]');
                 let flashcards = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelectorAll('li.flashcard:not(.flashcard--flipped)');
                 let accordionButtons = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelectorAll('button.blocks-accordion__header[aria-expanded="false"]');
-
+                let quizOptions = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelectorAll('input.quiz-multiple-choice-option__input');
 
                 if(nextPageBtn && !nextPageBtn.disabled) {
                     addLogInfo('Clause 1: Found next page button and not disabled', line());
@@ -487,6 +487,20 @@
                         addLogSuccess("Clause 7: accordion button clicked", line());
                         document.getElementById('btn-auto-mode').classList.add('pulse');
                     });
+                }
+                else if (quizOptions && quizOptions.length > 0) {
+                    addLogInfo('Clause 8: Found quiz options', line());
+                    quizOptions.forEach(e => {
+                        e.click();
+                        addLogSuccess("Clause 8: quiz option clicked", line());
+                        document.getElementById('btn-auto-mode').classList.add('pulse');
+                    });
+                    let submitButton = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelectorAll('button.quiz-card__button');
+                    if(submitButton && submitButton.length === 1) {
+                        submitButton[0].click();
+                        addLogSuccess("Clause 8: quiz submit button clicked", line());
+                        document.getElementById('btn-auto-mode').classList.add('pulse');
+                    }
                 }
     
                 // let continueButton1 = document.querySelector('[aria-label="Continue   Trigger this button to go to the next slide"]');
