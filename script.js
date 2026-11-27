@@ -496,7 +496,7 @@
                         document.getElementById('btn-auto-mode').classList.add('pulse');
                     });
                     let submitButton = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelectorAll('button.quiz-card__button');
-                    if(submitButton && submitButton.length === 1) {
+                    if(submitButton && submitButton.length === 1 && submitButton[0].getAttribute('aria-hidden') !== 'true') {
                         submitButton[0].click();
                         addLogSuccess("Clause 8: quiz submit button clicked", line());
                         document.getElementById('btn-auto-mode').classList.add('pulse');
