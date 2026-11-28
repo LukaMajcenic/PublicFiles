@@ -425,7 +425,7 @@
                 let lessonNavLink = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelector('.lesson-nav-link__link.lesson-nav-link__link--theme-default[data-direction="next"]');
                 let flashcards = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelectorAll('li.flashcard:not(.flashcard--flipped)');
                 let accordionButtons = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelectorAll('button.blocks-accordion__header[aria-expanded="false"]');
-                let quizOptions = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelectorAll('input.quiz-multiple-choice-option__input');
+                let quizOptions = document.querySelector('iframe[name="scormdriver_content"]')?.contentDocument?.querySelectorAll('input.quiz-multiple-choice-option__input, input.quiz-multiple-response-option__input');
 
                 if(nextPageBtn && !nextPageBtn.disabled) {
                     addLogInfo('Clause 1: Found next page button and not disabled', line());
